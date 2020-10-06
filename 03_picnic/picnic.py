@@ -49,6 +49,7 @@ def main():
 
     print(f'You are bringing {items_list}.')
 
+
 # --------------------------------------------------
 if __name__ == '__main__':
     main()
