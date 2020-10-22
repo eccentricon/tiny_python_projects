@@ -13,21 +13,22 @@ def get_args():
     """Get command-line arguments"""
 
     parser = argparse.ArgumentParser(
-        description='Gashlycrumb',
-        formatter_class=argparse.ArgumentDefaultsHelpFormatter)
+        description="Gashlycrumb",
+        formatter_class=argparse.ArgumentDefaultsHelpFormatter,
+    )
 
-    parser.add_argument('letter',
-                        metavar='letter',
-                        nargs='+',
-                        type=str,
-                        help='letter(s)')
+    parser.add_argument(
+        "letter", metavar="letter", nargs="+", type=str, help="letter(s)"
+    )
 
-    parser.add_argument('-f',
-                        '--file',
-                        help='input file',
-                        metavar='FILE',
-                        type=argparse.FileType('rt'),
-                        default='gashlycrumb.txt')
+    parser.add_argument(
+        "-f",
+        "--file",
+        help="input file",
+        metavar="FILE",
+        type=argparse.FileType("rt"),
+        default="gashlycrumb.txt",
+    )
 
     return parser.parse_args()
 
@@ -38,11 +39,13 @@ def main():
 
     args = get_args()
 
-    gashlycrumbs = { line[0].upper(): line.rstrip() for line in args.file }
+    # Use a dictionary comprehension here.
+    gashlycrumbs = {line[0].upper(): line.rstrip() for line in args.file}
 
     for letter in args.letter:
         print(gashlycrumbs.get(letter.upper(), f'I do not know "{letter}".'))
 
+
 # --------------------------------------------------
-if __name__ == '__main__':
+if __name__ == "__main__":
     main()
